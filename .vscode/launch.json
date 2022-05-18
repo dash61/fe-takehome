@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Yarn: Run server",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeVersion": "default",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "noDebug": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug in Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}

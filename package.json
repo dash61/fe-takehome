@@ -1,0 +1,217 @@
+{
+  "name": "noiseaware-takehome",
+  "version": "0.1.0",
+  "description": "NoiseAware",
+  "author": "Paolo Bergantino",
+  "license": "Proprietary",
+  "private": true,
+  "scripts": {
+    "start": "bin/start",
+    "build": "rm -rf dist public/config.js && vite build",
+    "deploy": "bin/deploy",
+    "format": "prettier --write src",
+    "isort": "format-imports src",
+    "lint": "eslint --ext .js,.jsx .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.0",
+    "@sentry/react": "^6.19.7",
+    "bows": "^1.7.2",
+    "formik": "^2.2.9",
+    "inflection": "^1.13.2",
+    "internal-nav-helper": "^3.1.0",
+    "milliseconds": "^1.0.3",
+    "money-clip": "^3.0.5",
+    "prop-types": "^15.8.1",
+    "query-string": "^7.1.1",
+    "ramda": "^0.28.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "redux-bundler": "^28.0.3",
+    "redux-bundler-hook": "^1.0.3",
+    "safe-storage": "^1.0.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/plugin-transform-runtime": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@jest/globals": "^28.1.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
+    "@vitejs/plugin-react": "^1.3.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "format-imports": "^3.0.12",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "prettier": "^2.6.2",
+    "vite": "^2.9.9"
+  },
+  "engines": {
+    "node": "^18.0.0"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "runtime": "automatic"
+        }
+      ],
+      [
+        "module-resolver",
+        {
+          "alias": {
+            "~": "./src",
+            "@lib": "./src/Lib",
+            "@ui": "./src/UI"
+          }
+        }
+      ],
+      [
+        "@babel/plugin-transform-runtime"
+      ]
+    ],
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "airbnb",
+      "plugin:react/jsx-runtime",
+      "prettier"
+    ],
+    "globals": {
+      "__version__": "readonly"
+    },
+    "ignorePatterns": [
+      "dist/*",
+      "node_modules/*"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "bin/*",
+          "vite.config.js"
+        ],
+        "rules": {
+          "global-require": [
+            "off"
+          ],
+          "import/no-extraneous-dependencies": [
+            "error",
+            {
+              "devDependencies": true
+            }
+          ],
+          "no-console": [
+            "off"
+          ],
+          "no-process-env": [
+            "off"
+          ]
+        }
+      }
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "no-process-env": [
+        "error"
+      ],
+      "no-restricted-globals": [
+        "error",
+        {
+          "name": "window",
+          "message": "Please use globalThis instead."
+        }
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+    }
+  },
+  "importSorter": {
+    "autoFormat": "onSave",
+    "quoteMark": "single",
+    "groupRules": [
+      {
+        "regex": "^react(-dom)?(/.*)?$"
+      },
+      {
+        "regex": "^(prop-types|redux|ramda|i18n|memoize|clsx|color)"
+      },
+      {
+        "regex": "^(@mui|react-select|react-beautiful-dnd|downshift|victory)"
+      },
+      {},
+      {
+        "regex": "^(~|@lib|@ui)"
+      },
+      {
+        "regex": "^[.]"
+      }
+    ],
+    "hasSemicolon": false,
+    "keepUnused": [
+      ".*"
+    ],
+    "maxLineLength": 88,
+    "trailingComma": "multiLine",
+    "wrappingStyle": "prettier"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "/.history/.*",
+      "/node_modules/",
+      "/dist/.*",
+      "/public/.*"
+    ]
+  },
+  "prettier": {
+    "printWidth": 88,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "#": "This file tells the IDE how to resolve imports. It does not configure the bundler.",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@lib/*": ["./src/Lib/*"],
+      "@ui/*": ["./src/UI/*"]
+    },
+    "target": "es6"
+  },
+  "exclude": ["**/node_modules", "dist", ".env.*"],
+  "include": ["./src/**/*.js", "./src/**/*.jsx", "./lib/**/*.js", "./lib/**/*.jsx"]
+}
