@@ -7,16 +7,16 @@ BASE_DIR=$(readlink -f $0 | xargs dirname | xargs dirname)
 ENV=${1:-development}
 ENV_FILE="${BASE_DIR}/.env.${ENV}"
 
-if [ ! -f "${ENV_FILE}" ]; then
-  echo "The file .env.${ENV} does not exist. Should probably create it."
-  exit 1
-fi
+# if [ ! -f "${ENV_FILE}" ]; then
+#   echo "The file .env.${ENV} does not exist. Should probably create it."
+#   exit 1
+# fi
 
 # ensure dependencies up to date
 yarn
 
 # write config file
-"${BASE_DIR}/bin/configure" "${ENV_FILE}" > "${BASE_DIR}/public/config.js"
+# "${BASE_DIR}/bin/configure" "${ENV_FILE}" > "${BASE_DIR}/public/config.js"
 
 # start dev server
 exec vite
