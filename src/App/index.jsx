@@ -13,7 +13,6 @@ function App() {
 
   return (
     <div id="wrapper" onClick={getNavHelper(doUpdateUrl)}>
-      <h1>NoiseAware</h1>
       <RoutedComponent />
     </div>
   )
